@@ -1,0 +1,2 @@
+INSERT INTO client (document_type, document_number, firstname, lastname, phone, address, city) VALUES ('C', 23445322, 'Pedro', 'Perez', '312034351', 'Calle C', 'Bogota');
+INSERT INTO client (document_type, document_number, firstname, lastname, phone, address, city) VALUES ('P', 123456, 'Maria', 'Martinez', '300123435', 'Cra A', 'Medellin');
