@@ -15,13 +15,13 @@ public class HandleException extends ResponseEntityExceptionHandler {
 	private static Logger _logger = LoggerFactory.getLogger(HandleException.class);
 
 	@ExceptionHandler(ServiceException.class)
-	public final ResponseEntity<?> handleServiceExceptions(ServiceException serviceException) {
+	public final ResponseEntity<ExceptionResponse> handleServiceException(ServiceException serviceException) {
 		_logger.error("Error Handler ---> ", serviceException.getMessage());
-		return new ResponseEntity<>(serviceException.getMessage(), serviceException.getHttpStatus());
+		return new ResponseEntity<ExceptionResponse>(new ExceptionResponse(serviceException.getErrorCode(), serviceException.getMessage()), serviceException.getHttpStatus());
 	}
 	
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<?> handleServiceExceptions(Exception exception) {
+	public final ResponseEntity<?> handleException(Exception exception) {
 		_logger.error("Error Not Handler ---> ", exception.getMessage());
 		return new ResponseEntity<>("An unexpected error ocurred", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
